@@ -210,11 +210,19 @@ class AnomalyDetector:
                 % (risk_tier, anomaly_score, trigger_str)
             )
         else:
-            parts.append(
-                "Risk tier **%s** (score %.4f): transaction is within the normal range; "
-                "no unusual inflows, outflows, or balance errors detected."
-                % (risk_tier, anomaly_score)
-            )
+            if risk_tier == "Low":
+                parts.append(
+                    "Risk tier **%s** (score %.4f): transaction is within the normal range; "
+                    "no unusual inflows, outflows, or balance errors detected."
+                    % (risk_tier, anomaly_score)
+                )
+            else:
+                parts.append(
+                    "Risk tier **%s** (score %.4f): no specific anomaly triggers "
+                    "(unusual inflows, outflows, or balance errors) were detected; "
+                    "the score falls in the %s risk range and may warrant review."
+                    % (risk_tier, anomaly_score, risk_tier.lower())
+                )
         return " ".join(parts)
 
     @staticmethod
