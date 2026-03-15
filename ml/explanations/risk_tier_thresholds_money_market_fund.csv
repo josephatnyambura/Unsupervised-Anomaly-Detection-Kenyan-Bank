@@ -1,0 +1,4 @@
+Risk_Tier,Min_Score,Max_Score,Description
+Low,0.0,0.043206152717611496,Fusion score < 0.0432
+Medium,0.043206152717611496,0.07741601594051313,0.0432 <= Fusion score < 0.0774
+High,0.07741601594051313,1.0,Fusion score >= 0.0774

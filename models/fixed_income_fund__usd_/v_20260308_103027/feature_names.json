@@ -1,0 +1,12 @@
+[
+  "balance",
+  "zero_activity_freq",
+  "ratio",
+  "cumulativeincome",
+  "lag_balance",
+  "lag_cumulativeincome",
+  "rolling_mean_balance",
+  "rolling_mean_cumulativeincome",
+  "rolling_std_cumulativeincome",
+  "has_trigger"
+]

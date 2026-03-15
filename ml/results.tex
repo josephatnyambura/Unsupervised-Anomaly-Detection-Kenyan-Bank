@@ -1,0 +1,684 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{times}
+\graphicspath{{./ml/plots/}{./temp_ml_plots/}}
+\begin{document}
+\title{Machine Learning Results for Anomaly Detection}
+\author{Your Name}
+\maketitle
+\noindent\textbf{Note:} The best-performing model per fund is selected by maximum AUC and used consistently for anomaly export, reporting, and deployment. ROC and anomaly-over-time figures may use best-model assets (\texttt{roc\_curve\_best\_model\_*.png}, \texttt{enhanced\_anomaly\_best\_model\_*.png}). Sample anomaly tables show inflows, outflows, and balance in raw monetary values when preserved by the pipeline; otherwise standardized values are reported.
+\section{Feature Importance}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/feature_importance_money_market_fund.png}
+
+\caption{Top 10 Feature Importance (Correlation with Anomaly Scores) for MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/feature_importance_fixed_income_fund__usd_.png}
+
+\caption{Top 10 Feature Importance (Correlation with Anomaly Scores) for FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\section{Results for MONEY MARKET FUND (Local Currency)}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_isolation_forest_money_market_fund.png}
+
+\caption{Confusion Matrix for Isolation Forest on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_isolation_forest_money_market_fund.png}
+
+\caption{ROC Curve for Isolation Forest on MONEY MARKET FUND (Local Currency) (AUC = 0.89).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_isolation_forest_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for Isolation Forest on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_one_class_svm_money_market_fund.png}
+
+\caption{Confusion Matrix for One-Class SVM on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_one_class_svm_money_market_fund.png}
+
+\caption{ROC Curve for One-Class SVM on MONEY MARKET FUND (Local Currency) (AUC = 0.73).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_one_class_svm_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for One-Class SVM on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_local_outlier_factor_money_market_fund.png}
+
+\caption{Confusion Matrix for Local Outlier Factor on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_local_outlier_factor_money_market_fund.png}
+
+\caption{ROC Curve for Local Outlier Factor on MONEY MARKET FUND (Local Currency) (AUC = 0.63).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_local_outlier_factor_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for Local Outlier Factor on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_autoencoder_money_market_fund.png}
+
+\caption{Confusion Matrix for Autoencoder on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_autoencoder_money_market_fund.png}
+
+\caption{ROC Curve for Autoencoder on MONEY MARKET FUND (Local Currency) (AUC = 0.97).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_autoencoder_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for Autoencoder on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_lstm_autoencoder_money_market_fund.png}
+
+\caption{Confusion Matrix for LSTM Autoencoder on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_lstm_autoencoder_money_market_fund.png}
+
+\caption{ROC Curve for LSTM Autoencoder on MONEY MARKET FUND (Local Currency) (AUC = 0.96).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_lstm_autoencoder_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for LSTM Autoencoder on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_temporal_graph_network_money_market_fund.png}
+
+\caption{Confusion Matrix for Temporal Graph Network on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_temporal_graph_network_money_market_fund.png}
+
+\caption{ROC Curve for Temporal Graph Network on MONEY MARKET FUND (Local Currency) (AUC = 0.89).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_temporal_graph_network_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for Temporal Graph Network on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_antibenford_subgraphs_money_market_fund.png}
+
+\caption{Confusion Matrix for AntiBenford Subgraphs on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_antibenford_subgraphs_money_market_fund.png}
+
+\caption{ROC Curve for AntiBenford Subgraphs on MONEY MARKET FUND (Local Currency) (AUC = 0.89).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_antibenford_subgraphs_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for AntiBenford Subgraphs on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_spinex_anomaly_money_market_fund.png}
+
+\caption{Confusion Matrix for SPINEX-anomaly on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_spinex_anomaly_money_market_fund.png}
+
+\caption{ROC Curve for SPINEX-anomaly on MONEY MARKET FUND (Local Currency) (AUC = 0.65).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_spinex_anomaly_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for SPINEX-anomaly on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_graph_based_anomaly_money_market_fund.png}
+
+\caption{Confusion Matrix for Graph-based Anomaly on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_graph_based_anomaly_money_market_fund.png}
+
+\caption{ROC Curve for Graph-based Anomaly on MONEY MARKET FUND (Local Currency) (AUC = 0.65).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_graph_based_anomaly_money_market_fund.png}
+
+\caption{Anomaly Detection Over Time for Graph-based Anomaly on MONEY MARKET FUND (Local Currency).}
+
+\end{figure}
+\begin{table}[h]
+
+\centering
+
+\caption{Model Performance Metrics for MONEY MARKET FUND (Local Currency)}
+
+\begin{tabular}{lccccc}
+
+\hline
+
+Model & AUC & Avg. Precision & Precision & Recall & F1-Score \\
+
+\hline
+
+Autoencoder & 0.97 & 0.42 & 0.58 & 0.92 & 0.71 \\
+
+LSTM Autoencoder & 0.96 & 0.41 & 0.56 & 0.89 & 0.69 \\
+
+Isolation Forest & 0.89 & 0.15 & 0.06 & 0.02 & 0.03 \\
+
+Temporal Graph Network & 0.89 & 0.15 & 0.14 & 0.17 & 0.15 \\
+
+AntiBenford Subgraphs & 0.89 & 0.15 & 0.14 & 0.17 & 0.15 \\
+
+One-Class SVM & 0.73 & 0.28 & 0.20 & 0.06 & 0.10 \\
+
+SPINEX-anomaly & 0.65 & 0.06 & 0.10 & 0.15 & 0.12 \\
+
+Graph-based Anomaly & 0.65 & 0.06 & 0.10 & 0.15 & 0.12 \\
+
+Local Outlier Factor & 0.63 & 0.06 & 0.11 & 0.03 & 0.05 \\
+
+\hline
+
+\end{tabular}
+
+\end{table}
+
+\subsection{Parameters for MONEY MARKET FUND (Local Currency)}
+\begin{itemize}
+
+\item Autoencoder: 
+\item LSTM Autoencoder: 
+\item Isolation Forest: bootstrap=False, contamination=0.01, max_features=1.0, max_samples=auto, n_estimators=100, n_jobs=None, random_state=42, verbose=0, warm_start=False
+\item Temporal Graph Network: bootstrap=False, contamination=0.05, max_features=1.0, max_samples=auto, n_estimators=100, n_jobs=None, random_state=42, verbose=0, warm_start=False
+\item AntiBenford Subgraphs: bootstrap=False, contamination=0.05, max_features=1.0, max_samples=auto, n_estimators=100, n_jobs=None, random_state=42, verbose=0, warm_start=False
+\item One-Class SVM: cache_size=200, coef0=0.0, degree=3, gamma=auto, kernel=rbf, max_iter=-1, nu=0.01, shrinking=True, tol=0.001, verbose=False
+\item SPINEX-anomaly: algorithm=auto, contamination=0.05, leaf_size=30, metric=minkowski, metric_params=None, n_jobs=None, n_neighbors=20, novelty=False, p=2
+\item Graph-based Anomaly: algorithm=auto, contamination=0.05, leaf_size=30, metric=minkowski, metric_params=None, n_jobs=None, n_neighbors=20, novelty=False, p=2
+\item Local Outlier Factor: algorithm=auto, contamination=0.01, leaf_size=30, metric=minkowski, metric_params=None, n_jobs=None, n_neighbors=10, novelty=False, p=2
+\end{itemize}
+
+\begin{table}[h]
+
+\centering
+
+\caption{Sample of Anomalies Flagged by Best-Performing Model (selected by maximum AUC) for MONEY MARKET FUND (Local Currency). Inflows, balance, and cumulative income in raw monetary values when preserved; otherwise standardized.}
+
+\begin{tabular}{llllll}
+
+\hline
+
+Client ID & Date & Inflows (Local Currency) & Balance (Local Currency) & Cumulative Income (Local Currency) & Anomaly Score \\
+
+\hline
+
+B6809B0F-52A2-EF11-B300-005056A80461 & 2025-01-06 & -0.02 & -0.12 & -0.12 & 2.98 \\
+
+B6809B0F-52A2-EF11-B300-005056A80461 & 2025-01-08 & -0.01 & -0.12 & -0.12 & 3.11 \\
+
+B6809B0F-52A2-EF11-B300-005056A80461 & 2025-01-17 & 0.05 & -0.11 & -0.09 & 2.98 \\
+
+B6809B0F-52A2-EF11-B300-005056A80461 & 2025-01-27 & -0.02 & -0.11 & -0.06 & 2.98 \\
+
+B6809B0F-52A2-EF11-B300-005056A80461 & 2025-01-30 & -0.02 & -0.16 & -0.05 & 3.12 \\
+
+\hline
+
+\end{tabular}
+
+\end{table}
+
+\section{Results for FIXED INCOME FUND (USD) (USD)}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_isolation_forest_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for Isolation Forest on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_isolation_forest_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for Isolation Forest on FIXED INCOME FUND (USD) (USD) (AUC = 0.95).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_isolation_forest_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for Isolation Forest on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_one_class_svm_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for One-Class SVM on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_one_class_svm_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for One-Class SVM on FIXED INCOME FUND (USD) (USD) (AUC = 0.61).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_one_class_svm_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for One-Class SVM on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_local_outlier_factor_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for Local Outlier Factor on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_local_outlier_factor_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for Local Outlier Factor on FIXED INCOME FUND (USD) (USD) (AUC = 0.77).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_local_outlier_factor_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for Local Outlier Factor on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_autoencoder_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for Autoencoder on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_autoencoder_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for Autoencoder on FIXED INCOME FUND (USD) (USD) (AUC = 0.98).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_autoencoder_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for Autoencoder on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_lstm_autoencoder_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for LSTM Autoencoder on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_lstm_autoencoder_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for LSTM Autoencoder on FIXED INCOME FUND (USD) (USD) (AUC = 0.98).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_lstm_autoencoder_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for LSTM Autoencoder on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_temporal_graph_network_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for Temporal Graph Network on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_temporal_graph_network_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for Temporal Graph Network on FIXED INCOME FUND (USD) (USD) (AUC = 0.95).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_temporal_graph_network_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for Temporal Graph Network on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_antibenford_subgraphs_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for AntiBenford Subgraphs on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_antibenford_subgraphs_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for AntiBenford Subgraphs on FIXED INCOME FUND (USD) (USD) (AUC = 0.95).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_antibenford_subgraphs_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for AntiBenford Subgraphs on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_spinex_anomaly_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for SPINEX-anomaly on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_spinex_anomaly_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for SPINEX-anomaly on FIXED INCOME FUND (USD) (USD) (AUC = 0.75).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_spinex_anomaly_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for SPINEX-anomaly on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/confusion_matrix_graph_based_anomaly_fixed_income_fund__usd_.png}
+
+\caption{Confusion Matrix for Graph-based Anomaly on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.45\textwidth]{plots/roc_curve_graph_based_anomaly_fixed_income_fund__usd_.png}
+
+\caption{ROC Curve for Graph-based Anomaly on FIXED INCOME FUND (USD) (USD) (AUC = 0.75).}
+
+\end{figure}
+\begin{figure}[h]
+
+\centering
+
+\includegraphics[width=0.6\textwidth]{plots/enhanced_anomaly_graph_based_anomaly_fixed_income_fund__usd_.png}
+
+\caption{Anomaly Detection Over Time for Graph-based Anomaly on FIXED INCOME FUND (USD) (USD).}
+
+\end{figure}
+\begin{table}[h]
+
+\centering
+
+\caption{Model Performance Metrics for FIXED INCOME FUND (USD) (USD)}
+
+\begin{tabular}{lccccc}
+
+\hline
+
+Model & AUC & Avg. Precision & Precision & Recall & F1-Score \\
+
+\hline
+
+Autoencoder & 0.98 & 0.26 & 0.30 & 0.99 & 0.46 \\
+
+LSTM Autoencoder & 0.98 & 0.25 & 0.30 & 0.99 & 0.46 \\
+
+Isolation Forest & 0.95 & 0.15 & 0.04 & 0.05 & 0.04 \\
+
+Temporal Graph Network & 0.95 & 0.15 & 0.16 & 0.42 & 0.23 \\
+
+AntiBenford Subgraphs & 0.95 & 0.15 & 0.16 & 0.42 & 0.23 \\
+
+Local Outlier Factor & 0.77 & 0.08 & 0.16 & 0.11 & 0.13 \\
+
+SPINEX-anomaly & 0.75 & 0.13 & 0.13 & 0.43 & 0.20 \\
+
+Graph-based Anomaly & 0.75 & 0.13 & 0.13 & 0.43 & 0.20 \\
+
+One-Class SVM & 0.61 & 0.06 & 0.06 & 0.10 & 0.08 \\
+
+\hline
+
+\end{tabular}
+
+\end{table}
+
+\subsection{Parameters for FIXED INCOME FUND (USD) (USD)}
+\begin{itemize}
+
+\item Autoencoder: 
+\item LSTM Autoencoder: 
+\item Isolation Forest: bootstrap=False, contamination=0.01, max_features=1.0, max_samples=auto, n_estimators=100, n_jobs=None, random_state=42, verbose=0, warm_start=False
+\item Temporal Graph Network: bootstrap=False, contamination=0.05, max_features=1.0, max_samples=auto, n_estimators=100, n_jobs=None, random_state=42, verbose=0, warm_start=False
+\item AntiBenford Subgraphs: bootstrap=False, contamination=0.05, max_features=1.0, max_samples=auto, n_estimators=100, n_jobs=None, random_state=42, verbose=0, warm_start=False
+\item Local Outlier Factor: algorithm=auto, contamination=0.01, leaf_size=30, metric=minkowski, metric_params=None, n_jobs=None, n_neighbors=10, novelty=False, p=2
+\item SPINEX-anomaly: algorithm=auto, contamination=0.05, leaf_size=30, metric=minkowski, metric_params=None, n_jobs=None, n_neighbors=20, novelty=False, p=2
+\item Graph-based Anomaly: algorithm=auto, contamination=0.05, leaf_size=30, metric=minkowski, metric_params=None, n_jobs=None, n_neighbors=20, novelty=False, p=2
+\item One-Class SVM: cache_size=200, coef0=0.0, degree=3, gamma=auto, kernel=rbf, max_iter=-1, nu=0.01, shrinking=True, tol=0.001, verbose=False
+\end{itemize}
+
+\begin{table}[h]
+
+\centering
+
+\caption{Sample of Anomalies Flagged by Best-Performing Model (selected by maximum AUC) for FIXED INCOME FUND (USD) (USD). Inflows and balance in raw monetary values when preserved; otherwise standardized.}
+
+\begin{tabular}{llllll}
+
+\hline
+
+Client ID & Date & Inflows (USD) & Balance (USD) & Cumulative Income (USD) & Anomaly Score \\
+
+\hline
+
+B20DADC6-1EA5-EF11-B300-005056A80461 & 2024-12-23 & -0.01 & -0.16 & -0.14 & 18.52 \\
+
+B337E83A-6E8D-EF11-B2FF-005056A80461 & 2024-11-14 & 0.14 & -0.15 & -0.14 & 18.58 \\
+
+B337E83A-6E8D-EF11-B2FF-005056A80461 & 2025-01-31 & -0.02 & -0.15 & -0.12 & 5.73 \\
+
+B361425E-3611-F011-B304-005056A80461 & 2025-04-07 & 0.03 & -0.16 & -0.14 & 18.52 \\
+
+B438E1BD-44A3-EF11-B300-005056A80461 & 2024-11-25 & -0.01 & -0.16 & -0.14 & 18.49 \\
+
+\hline
+
+\end{tabular}
+
+\end{table}
+
+\end{document}

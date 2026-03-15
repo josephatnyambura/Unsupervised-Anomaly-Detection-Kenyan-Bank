@@ -1,0 +1,27 @@
+{
+  "fund_name": "MONEY MARKET FUND",
+  "model_name": "Isolation Forest",
+  "timestamp": "20260222_072951",
+  "created_at": "2026-02-22T07:29:52.036865",
+  "random_seed": 42,
+  "feature_count": 5,
+  "feature_names": [
+    "inflows",
+    "gross_activity",
+    "zero_activity_freq",
+    "rolling_mean_inflows",
+    "rolling_std_inflows"
+  ],
+  "n_estimators": 200,
+  "contamination": 0.05,
+  "training_samples": 142266,
+  "anomalies_detected": 7112,
+  "performance_metrics": {
+    "contamination_rate": 0.05,
+    "mean_anomaly_score": 0.353079,
+    "std_anomaly_score": 0.081459
+  },
+  "model_path": "C:\\Users\\A257985\\OneDrive - Standard Bank\\Academics\\Notes\\Year 1\\sem 2\\8201 Research Methods for Data Science and Analytics\\Project\\Python Scripts\\Version 2.0 - Cursor\\models\\money_market_fund\\v_20260222_072951\\model.joblib",
+  "scaler_path": "C:\\Users\\A257985\\OneDrive - Standard Bank\\Academics\\Notes\\Year 1\\sem 2\\8201 Research Methods for Data Science and Analytics\\Project\\Python Scripts\\Version 2.0 - Cursor\\models\\money_market_fund\\v_20260222_072951\\scaler.joblib",
+  "features_path": "C:\\Users\\A257985\\OneDrive - Standard Bank\\Academics\\Notes\\Year 1\\sem 2\\8201 Research Methods for Data Science and Analytics\\Project\\Python Scripts\\Version 2.0 - Cursor\\models\\money_market_fund\\v_20260222_072951\\feature_names.json"
+}

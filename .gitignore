@@ -4,6 +4,25 @@
 # Use Command Prompt (cmd) for the steps in GIT_PUSH_STEPS.md
 # ─────────────────────────────────────────────────────────────────────────────
 
+# ---- Do not push: Proposal folder (avoids "Filename too long" on Windows) ----
+Unit Trust Anomaly Detection ML Model - Proposal/
+**/Unit Trust Anomaly Detection ML Model - Proposal/
+
+# ---- Do not push: article and presentation ----
+article/
+presentation/
+
+# ---- Unnecessary .md (keep only main: README.md, deployment/*.md, streamlit_app/README.md, fastapi_app/README.md) ----
+/PROJECT_STATUS.md
+/MainMarkdown.md
+/IMPLEMENTATION_SUMMARY.md
+
+# ---- Excel files (do not push) ----
+*.xlsx
+*.xls
+*.xlsm
+*.xlsb
+
 # ---- Python ----
 __pycache__/
 *.py[cod]
@@ -74,6 +93,14 @@ ENV/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# ---- EDA plots (long names hit Windows path limit) ----
+eda/eda_plots/
+eda/plots/
+**/eda_plots/
+**/eda/plots/
+*clientriskthreshhold*
+*clientsubtype*
 
 # ---- Optional: large data (uncomment if repo size is an issue) ----
 # ml/anomalies/*.csv

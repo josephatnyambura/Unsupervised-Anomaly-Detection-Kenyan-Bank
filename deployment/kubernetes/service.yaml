@@ -1,0 +1,25 @@
+# Service for Anomaly Detector
+apiVersion: v1
+kind: Service
+metadata:
+  name: anomaly-detector
+  namespace: banking-services
+  labels:
+    app: anomaly-detector
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 5000
+    protocol: TCP
+    name: http
+  selector:
+    app: anomaly-detector
+---
+# Service Account
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: anomaly-detector
+  namespace: banking-services
+

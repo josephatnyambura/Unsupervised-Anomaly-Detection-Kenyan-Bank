@@ -1,0 +1,52 @@
+
+================================================================================
+MODEL EXPLANATIONS FOR MONEY MARKET FUND
+Best Model: LSTM Autoencoder
+================================================================================
+
+RISK TIER THRESHOLDS:
+
+  Mean (μ):        0.0090
+  Std Dev (σ):     0.0342
+
+  Low Risk:    Fusion Score ≤ 0.0432 (μ + 1σ)
+  Medium Risk: 0.0432 < Fusion Score ≤ 0.0774 (μ + 2σ)
+  High Risk:   Fusion Score > 0.0774 (> μ + 2σ)
+RISK TIER DISTRIBUTION:
+  High    : 9,699 transactions (6.8%)
+  Low     : 131,893 transactions (92.7%)
+  Medium  : 674 transactions (0.5%)
+
+FUSION SCORE STATISTICS:
+  Min:     0.0000
+  Max:     0.7181
+  Mean:    0.0090
+  Median:  0.0001
+  Std Dev: 0.0342
+
+TOP 10 CONTRIBUTING FEATURES (from SHAP):
+  2. zero_activity_freq            : 0.131867
+  9. balance_error_flag            : 0.096980
+  10. has_trigger                   : 0.075834
+  4. lag_balance                   : 0.020406
+  8. rolling_std_cumulativeincome  : 0.019248
+  1. balance                       : 0.014216
+  6. rolling_mean_balance          : 0.012128
+  3. cumulativeincome              : 0.003481
+  7. rolling_mean_cumulativeincome : 0.001600
+  5. lag_cumulativeincome          : 0.001560
+
+WHAT MAKES A TRANSACTION ANOMALOUS:
+A transaction is flagged as anomalous based on:
+  1. Fusion Score (40% original anomaly score + 60% model predictions)
+  2. Original anomaly score considers:
+     - Zero activity when not typical for the client
+     - Presence of reversals (weighted higher)
+     - Income distribution events
+     - Unusual balance changes (>2 std deviations)
+  3. Model predictions based on learned patterns from historical data
+  4. Month-end adjustments (30% reduction during last 3 days of month)
+
+NORMAL VS ANOMALY COMPARISON:
+  Normal (Low Risk) transactions:  131,893
+  Anomaly (High Risk) transactions: 9,699

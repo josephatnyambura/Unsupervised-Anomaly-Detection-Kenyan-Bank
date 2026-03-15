@@ -1,0 +1,73 @@
+# Kubernetes CronJob for Monthly Retraining
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: model-retraining
+  namespace: banking-services
+spec:
+  # Run on the 1st of every month at 2 AM
+  schedule: "0 2 1 * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: model-retraining
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: model-retraining
+          containers:
+          - name: retrainer
+            image: anomaly-detector:latest
+            command: ["python", "/app/retraining/monthly_retrain.py"]
+            env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: anomaly-detector-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: anomaly-detector-config
+                  key: DB_PORT
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: anomaly-detector-config
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: anomaly-detector-secrets
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: anomaly-detector-secrets
+                  key: DB_PASSWORD
+            resources:
+              requests:
+                memory: "4Gi"
+                cpu: "2000m"
+              limits:
+                memory: "8Gi"
+                cpu: "4000m"
+            volumeMounts:
+            - name: models
+              mountPath: /app/models
+          volumes:
+          - name: models
+            persistentVolumeClaim:
+              claimName: models-pvc
+---
+# Service Account for retraining job
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: model-retraining
+  namespace: banking-services
+

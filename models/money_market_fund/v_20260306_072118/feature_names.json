@@ -1,0 +1,12 @@
+[
+  "zero_activity_freq",
+  "rolling_mean_inflows",
+  "rolling_std_inflows",
+  "gross_activity",
+  "inflows",
+  "lag_inflows",
+  "inflow_diff",
+  "balance_anomaly_flag",
+  "income_diff",
+  "balance_change"
+]

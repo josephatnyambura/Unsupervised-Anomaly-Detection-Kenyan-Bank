@@ -1,0 +1,56 @@
+Confusion Matrix Isolation Forest (MONEY MARKET FUND): plots/confusion_matrix_isolation_forest_money_market_fund.png
+ROC Curve Isolation Forest (MONEY MARKET FUND): plots/roc_curve_isolation_forest_money_market_fund.png
+Anomaly Over Time Isolation Forest (MONEY MARKET FUND): plots/enhanced_anomaly_isolation_forest_money_market_fund.png
+Confusion Matrix One-Class SVM (MONEY MARKET FUND): plots/confusion_matrix_one_class_svm_money_market_fund.png
+ROC Curve One-Class SVM (MONEY MARKET FUND): plots/roc_curve_one_class_svm_money_market_fund.png
+Anomaly Over Time One-Class SVM (MONEY MARKET FUND): plots/enhanced_anomaly_one_class_svm_money_market_fund.png
+Confusion Matrix Local Outlier Factor (MONEY MARKET FUND): plots/confusion_matrix_local_outlier_factor_money_market_fund.png
+ROC Curve Local Outlier Factor (MONEY MARKET FUND): plots/roc_curve_local_outlier_factor_money_market_fund.png
+Anomaly Over Time Local Outlier Factor (MONEY MARKET FUND): plots/enhanced_anomaly_local_outlier_factor_money_market_fund.png
+Confusion Matrix Autoencoder (MONEY MARKET FUND): plots/confusion_matrix_autoencoder_money_market_fund.png
+ROC Curve Autoencoder (MONEY MARKET FUND): plots/roc_curve_autoencoder_money_market_fund.png
+Anomaly Over Time Autoencoder (MONEY MARKET FUND): plots/enhanced_anomaly_autoencoder_money_market_fund.png
+Confusion Matrix LSTM Autoencoder (MONEY MARKET FUND): plots/confusion_matrix_lstm_autoencoder_money_market_fund.png
+ROC Curve LSTM Autoencoder (MONEY MARKET FUND): plots/roc_curve_lstm_autoencoder_money_market_fund.png
+Anomaly Over Time LSTM Autoencoder (MONEY MARKET FUND): plots/enhanced_anomaly_lstm_autoencoder_money_market_fund.png
+Confusion Matrix Temporal Graph Network (MONEY MARKET FUND): plots/confusion_matrix_temporal_graph_network_money_market_fund.png
+ROC Curve Temporal Graph Network (MONEY MARKET FUND): plots/roc_curve_temporal_graph_network_money_market_fund.png
+Anomaly Over Time Temporal Graph Network (MONEY MARKET FUND): plots/enhanced_anomaly_temporal_graph_network_money_market_fund.png
+Confusion Matrix AntiBenford Subgraphs (MONEY MARKET FUND): plots/confusion_matrix_antibenford_subgraphs_money_market_fund.png
+ROC Curve AntiBenford Subgraphs (MONEY MARKET FUND): plots/roc_curve_antibenford_subgraphs_money_market_fund.png
+Anomaly Over Time AntiBenford Subgraphs (MONEY MARKET FUND): plots/enhanced_anomaly_antibenford_subgraphs_money_market_fund.png
+Confusion Matrix SPINEX-anomaly (MONEY MARKET FUND): plots/confusion_matrix_spinex_anomaly_money_market_fund.png
+ROC Curve SPINEX-anomaly (MONEY MARKET FUND): plots/roc_curve_spinex_anomaly_money_market_fund.png
+Anomaly Over Time SPINEX-anomaly (MONEY MARKET FUND): plots/enhanced_anomaly_spinex_anomaly_money_market_fund.png
+Confusion Matrix Graph-based Anomaly (MONEY MARKET FUND): plots/confusion_matrix_graph_based_anomaly_money_market_fund.png
+ROC Curve Graph-based Anomaly (MONEY MARKET FUND): plots/roc_curve_graph_based_anomaly_money_market_fund.png
+Anomaly Over Time Graph-based Anomaly (MONEY MARKET FUND): plots/enhanced_anomaly_graph_based_anomaly_money_market_fund.png
+Confusion Matrix Isolation Forest (FIXED INCOME FUND (USD)): plots/confusion_matrix_isolation_forest_fixed_income_fund__usd_.png
+ROC Curve Isolation Forest (FIXED INCOME FUND (USD)): plots/roc_curve_isolation_forest_fixed_income_fund__usd_.png
+Anomaly Over Time Isolation Forest (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_isolation_forest_fixed_income_fund__usd_.png
+Confusion Matrix One-Class SVM (FIXED INCOME FUND (USD)): plots/confusion_matrix_one_class_svm_fixed_income_fund__usd_.png
+ROC Curve One-Class SVM (FIXED INCOME FUND (USD)): plots/roc_curve_one_class_svm_fixed_income_fund__usd_.png
+Anomaly Over Time One-Class SVM (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_one_class_svm_fixed_income_fund__usd_.png
+Confusion Matrix Local Outlier Factor (FIXED INCOME FUND (USD)): plots/confusion_matrix_local_outlier_factor_fixed_income_fund__usd_.png
+ROC Curve Local Outlier Factor (FIXED INCOME FUND (USD)): plots/roc_curve_local_outlier_factor_fixed_income_fund__usd_.png
+Anomaly Over Time Local Outlier Factor (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_local_outlier_factor_fixed_income_fund__usd_.png
+Confusion Matrix Autoencoder (FIXED INCOME FUND (USD)): plots/confusion_matrix_autoencoder_fixed_income_fund__usd_.png
+ROC Curve Autoencoder (FIXED INCOME FUND (USD)): plots/roc_curve_autoencoder_fixed_income_fund__usd_.png
+Anomaly Over Time Autoencoder (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_autoencoder_fixed_income_fund__usd_.png
+Confusion Matrix LSTM Autoencoder (FIXED INCOME FUND (USD)): plots/confusion_matrix_lstm_autoencoder_fixed_income_fund__usd_.png
+ROC Curve LSTM Autoencoder (FIXED INCOME FUND (USD)): plots/roc_curve_lstm_autoencoder_fixed_income_fund__usd_.png
+Anomaly Over Time LSTM Autoencoder (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_lstm_autoencoder_fixed_income_fund__usd_.png
+Confusion Matrix Temporal Graph Network (FIXED INCOME FUND (USD)): plots/confusion_matrix_temporal_graph_network_fixed_income_fund__usd_.png
+ROC Curve Temporal Graph Network (FIXED INCOME FUND (USD)): plots/roc_curve_temporal_graph_network_fixed_income_fund__usd_.png
+Anomaly Over Time Temporal Graph Network (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_temporal_graph_network_fixed_income_fund__usd_.png
+Confusion Matrix AntiBenford Subgraphs (FIXED INCOME FUND (USD)): plots/confusion_matrix_antibenford_subgraphs_fixed_income_fund__usd_.png
+ROC Curve AntiBenford Subgraphs (FIXED INCOME FUND (USD)): plots/roc_curve_antibenford_subgraphs_fixed_income_fund__usd_.png
+Anomaly Over Time AntiBenford Subgraphs (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_antibenford_subgraphs_fixed_income_fund__usd_.png
+Confusion Matrix SPINEX-anomaly (FIXED INCOME FUND (USD)): plots/confusion_matrix_spinex_anomaly_fixed_income_fund__usd_.png
+ROC Curve SPINEX-anomaly (FIXED INCOME FUND (USD)): plots/roc_curve_spinex_anomaly_fixed_income_fund__usd_.png
+Anomaly Over Time SPINEX-anomaly (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_spinex_anomaly_fixed_income_fund__usd_.png
+Confusion Matrix Graph-based Anomaly (FIXED INCOME FUND (USD)): plots/confusion_matrix_graph_based_anomaly_fixed_income_fund__usd_.png
+ROC Curve Graph-based Anomaly (FIXED INCOME FUND (USD)): plots/roc_curve_graph_based_anomaly_fixed_income_fund__usd_.png
+Anomaly Over Time Graph-based Anomaly (FIXED INCOME FUND (USD)): plots/enhanced_anomaly_graph_based_anomaly_fixed_income_fund__usd_.png
+Feature Importance MONEY MARKET FUND: plots/feature_importance_money_market_fund.png
+Feature Importance FIXED INCOME FUND (USD): plots/feature_importance_fixed_income_fund__usd_.png

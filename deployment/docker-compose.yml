@@ -1,0 +1,138 @@
+# Docker Compose for Local Development
+
+services:
+  # PostgreSQL Database
+  postgresql:
+    image: postgres:15-alpine
+    container_name: anomaly-db
+    environment:
+      POSTGRES_DB: anomaly_detection
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Apache Kafka
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+
+  # Anomaly Detection API (FastAPI + Uvicorn)
+  anomaly-detector:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: anomaly-detector
+    depends_on:
+      - postgresql
+    ports:
+      - "5000:5000"
+    environment:
+      MODELS_DIR: /app/models
+      DB_HOST: postgresql
+      DB_PORT: 5432
+      DB_NAME: anomaly_detection
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    volumes:
+      - ../models:/app/models:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; r = httpx.get('http://localhost:5000/health', timeout=5); assert r.status_code == 200"]
+      interval: 30s
+      timeout: 10s
+      start_period: 40s
+      retries: 3
+
+  # Kafka Consumer
+  kafka-consumer:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: kafka-consumer
+    depends_on:
+      - kafka
+      - anomaly-detector
+    restart: on-failure
+    command: ["python", "kafka_consumer.py"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "print('ok')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      API_URL: http://anomaly-detector:5000/predict
+      INPUT_TOPIC: transactions
+      OUTPUT_TOPIC: anomaly_predictions
+
+  # Prometheus (same network as anomaly-detector so it can scrape anomaly-detector:5000)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus-config.yaml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - default
+
+  # Grafana (pin version for stability; restart if it exits)
+  grafana:
+    image: grafana/grafana:10.2.2
+    container_name: grafana
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_SERVER_HTTP_PORT: "3000"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./monitoring/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./monitoring/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana-dashboard.json:/var/lib/grafana/dashboards/anomaly-detection.json
+      - grafana-data:/var/lib/grafana
+    networks:
+      - default
+
+volumes:
+  postgres-data:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  default:
+    name: anomaly-detection-network

@@ -1,0 +1,7 @@
+[
+  "inflows",
+  "gross_activity",
+  "zero_activity_freq",
+  "rolling_mean_inflows",
+  "rolling_std_inflows"
+]

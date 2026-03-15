@@ -1,0 +1,32 @@
+# ConfigMap for Anomaly Detector
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: anomaly-detector-config
+  namespace: banking-services
+data:
+  # API Configuration
+  API_VERSION: "v1"
+  LOG_LEVEL: "INFO"
+  
+  # Kafka Configuration
+  KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+  INPUT_TOPIC: "transactions"
+  OUTPUT_TOPIC: "anomaly_predictions"
+  BATCH_SIZE: "10"
+  BATCH_TIMEOUT: "1.0"
+  
+  # Database Configuration
+  DB_HOST: "postgresql"
+  DB_PORT: "5432"
+  DB_NAME: "anomaly_detection"
+  
+  # Performance Configuration
+  LATENCY_TARGET_MS: "100"
+  MAX_BATCH_SIZE: "100"
+  WORKER_THREADS: "4"
+  
+  # Model Configuration
+  MODEL_CACHE_SIZE: "3"
+  MODEL_RELOAD_INTERVAL: "3600"  # 1 hour
+

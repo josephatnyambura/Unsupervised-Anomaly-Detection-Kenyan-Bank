@@ -1,0 +1,31 @@
+{
+  "fund_name": "FIXED INCOME FUND (USD)",
+  "model_name": "Isolation Forest",
+  "timestamp": "20260306_132633",
+  "created_at": "2026-03-06T13:26:33.429576",
+  "random_seed": 42,
+  "feature_count": 10,
+  "feature_names": [
+    "zero_activity_freq",
+    "rolling_mean_inflows",
+    "rolling_std_inflows",
+    "gross_activity",
+    "inflows",
+    "lag_inflows",
+    "inflow_diff",
+    "income_diff",
+    "balance_change",
+    "balance_anomaly_flag"
+  ],
+  "performance_metrics": {
+    "auc": 0.9817080755782679,
+    "precision": 0.19074074074074074,
+    "recall": 0.9363636363636364,
+    "f1": 0.3169230769230769,
+    "avg_precision": 0.29948505340852377
+  },
+  "tuned_parameters": {},
+  "model_path": "c:\\Users\\A257985\\OneDrive - Standard Bank\\Academics\\Notes\\Year 1\\sem 2\\8201 Research Methods for Data Science and Analytics\\Project\\Python Scripts\\Version 2.0 - Cursor\\models\\fixed_income_fund__usd_\\v_20260306_132633\\model.joblib",
+  "scaler_path": "c:\\Users\\A257985\\OneDrive - Standard Bank\\Academics\\Notes\\Year 1\\sem 2\\8201 Research Methods for Data Science and Analytics\\Project\\Python Scripts\\Version 2.0 - Cursor\\models\\fixed_income_fund__usd_\\v_20260306_132633\\scaler.joblib",
+  "features_path": "c:\\Users\\A257985\\OneDrive - Standard Bank\\Academics\\Notes\\Year 1\\sem 2\\8201 Research Methods for Data Science and Analytics\\Project\\Python Scripts\\Version 2.0 - Cursor\\models\\fixed_income_fund__usd_\\v_20260306_132633\\feature_names.json"
+}

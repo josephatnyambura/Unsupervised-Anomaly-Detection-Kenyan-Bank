@@ -1,0 +1,48 @@
+# Kafka Topics Configuration for Anomaly Detection System
+
+# Input topic for raw transactions
+topics:
+  - name: transactions
+    partitions: 6
+    replication-factor: 3
+    configs:
+      retention.ms: 604800000  # 7 days
+      compression.type: lz4
+      max.message.bytes: 1048576  # 1MB
+      
+  # Output topic for anomaly predictions
+  - name: anomaly_predictions
+    partitions: 6
+    replication-factor: 3
+    configs:
+      retention.ms: 2592000000  # 30 days
+      compression.type: lz4
+      
+  # Dead letter queue for failed messages
+  - name: anomaly_detector_dlq
+    partitions: 3
+    replication-factor: 3
+    configs:
+      retention.ms: 2592000000  # 30 days
+      
+  # Alerts topic for high-risk anomalies
+  - name: anomaly_alerts
+    partitions: 3
+    replication-factor: 3
+    configs:
+      retention.ms: 7776000000  # 90 days
+      compression.type: lz4
+
+# Consumer groups
+consumer-groups:
+  - name: anomaly-detector-group
+    topics:
+      - transactions
+  - name: alerting-service-group
+    topics:
+      - anomaly_predictions
+  - name: audit-log-group
+    topics:
+      - anomaly_predictions
+      - anomaly_alerts
+
