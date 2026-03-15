@@ -1,0 +1,96 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# .gitignore — Anomaly Detection Project (GitHub + Streamlit Share)
+# ─────────────────────────────────────────────────────────────────────────────
+# Use Command Prompt (cmd) for the steps in GIT_PUSH_STEPS.md
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments (do not push)
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Environment and secrets (never push)
+.env
+.env.local
+.env.*.local
+*.env
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# ---- LaTeX build artifacts (keep .tex, ignore generated) ----
+*.log
+*.aux
+*.nav
+*.out
+*.toc
+*.synctex
+*.synctex.gz
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+
+# ---- Model binaries (large; regenerate with retrain_and_save_keras.py) ----
+# Uncomment the two lines below if your repo is too large for GitHub (>100MB file or slow push)
+# *.keras
+# *.joblib
+
+# ---- IDE and editors ----
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---- OS ----
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---- Optional: large data (uncomment if repo size is an issue) ----
+# ml/anomalies/*.csv
+# ml/explanations/*.csv
+# eda/plots/*.png
+# ml/plots/**/*.png
+
+# ---- Backups (do not push) ----
+*.backup.ipynb
+*.bak
+*.tmp
+*.temp
+*.orig
+
+# ---- Logs and temp ----
+*.log
+logs/
+tmp/
+temp/
+.cache/
