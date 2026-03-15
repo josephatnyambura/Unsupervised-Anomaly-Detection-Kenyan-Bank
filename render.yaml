@@ -1,6 +1,7 @@
 # Render Blueprint: Anomaly Detection API
 # Repo: https://github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank
-# Use Python 3.11 to avoid pandas/numpy build errors on newer Python (e.g. 3.14).
+# - In Render Dashboard: leave Root Directory blank (repo root). If set to a subfolder, run_api.py won't be found.
+# - PYTHON_VERSION=3.11.11 avoids pandas build errors.
 
 services:
   - type: web
@@ -9,7 +10,8 @@ services:
     plan: free
 
     buildCommand: pip install -r deployment/app/requirements.txt && pip install -r fastapi_app/requirements.txt
-    startCommand: python run_api.py
+    # Inline start so it works even if run_api.py is missing; runs from repo root.
+    startCommand: python -c "import os; import uvicorn; uvicorn.run('fastapi_app.main:app', host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))"
 
     envVars:
       - key: PYTHON_VERSION

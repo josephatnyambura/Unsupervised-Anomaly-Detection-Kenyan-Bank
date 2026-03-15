@@ -179,6 +179,7 @@ If the API was sleeping, the first “Check connection” may take 30–60 secon
 
 | Issue | What to do |
 |-------|------------|
+| **Deploy fails: `can't open file 'run_api.py'` (No such file or directory)** | Render is running the start command from a folder that doesn’t contain `run_api.py`. **Fix:** Dashboard → your service → **Settings** → set **Root Directory** to **blank** (repo root). Save and redeploy. Or use the inline start command in `render.yaml` so the app starts without `run_api.py`. |
 | **Build fails: `_PyLong_AsByteArray` / pandas “metadata-generation-failed”** | Render is using a Python (e.g. 3.14) with no pre-built pandas/numpy wheels. **Fix:** Dashboard → your service → **Environment** → add **`PYTHON_VERSION`** = **`3.11.11`** → Save → **Manual Deploy** (or push `render.yaml` and redeploy). |
 | Render build fails (e.g. `ModuleNotFoundError: deployment.app`) | Ensure **Root Directory** is blank (build from repo root) and **Start Command** runs from repo root; set **Environment** `PYTHONPATH=.` if needed. |
 | Render starts but `/health` returns "degraded" | Models are not loading. Ensure `models/model_registry.json` and each fund’s `models/<fund>/latest/model.keras` (or `.joblib`) and `scaler.joblib` are in the repo (not ignored by `.gitignore`). |
