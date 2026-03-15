@@ -17,11 +17,12 @@ presentation/
 /MainMarkdown.md
 /IMPLEMENTATION_SUMMARY.md
 
-# ---- Excel files (do not push) ----
+# ---- Excel and CSV (do not push) ----
 *.xlsx
 *.xls
 *.xlsm
 *.xlsb
+*.csv
 
 # ---- Python ----
 __pycache__/
@@ -102,9 +103,9 @@ eda/plots/
 *clientriskthreshhold*
 *clientsubtype*
 
-# ---- Optional: large data (uncomment if repo size is an issue) ----
-# ml/anomalies/*.csv
-# ml/explanations/*.csv
+# ---- Large data (over GitHub 50 MB limit; avoid push warnings) ----
+ml/anomalies/
+ml/explanations/
 # eda/plots/*.png
 # ml/plots/**/*.png
 
