@@ -1,0 +1,20 @@
+# Render Blueprint: Anomaly Detection API
+# Repo: https://github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank
+# Use Python 3.11 to avoid pandas/numpy build errors on newer Python (e.g. 3.14).
+
+services:
+  - type: web
+    runtime: python
+    name: anomaly-detection-api
+    plan: free
+
+    buildCommand: pip install -r deployment/app/requirements.txt && pip install -r fastapi_app/requirements.txt
+    startCommand: python run_api.py
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.11"
+      - key: PYTHONPATH
+        value: "."
+      - key: MODELS_DIR
+        value: "./models"
