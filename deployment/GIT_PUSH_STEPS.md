@@ -128,10 +128,10 @@ Then run the `git commit` command again.
 
 ## Step 9: Add GitHub as remote and push
 
-Replace `YOUR_USERNAME` and `YOUR_REPO` with your GitHub username and repo name (e.g. `jnyambura` and `anomaly-detection-kenyan-bank`).
+**Your repository:** [github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank](https://github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank)
 
 ```cmd
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git remote add origin https://github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank.git
 ```
 
 ```cmd

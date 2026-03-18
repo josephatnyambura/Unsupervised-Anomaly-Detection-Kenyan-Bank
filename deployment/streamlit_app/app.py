@@ -62,8 +62,36 @@ FEATURE_UI = {
 }
 BINARY_FEATURES = {"has_trigger", "balance_error_flag", "is_first_transaction", "inflow_spike", "outflow_spike"}
 
-# Default API URL; override with env var API_BASE_URL (e.g. for Streamlit Cloud)
-DEFAULT_API_URL = os.environ.get("API_BASE_URL", "http://localhost:5000")
+def resolve_default_api_url() -> str:
+    """
+    Resolve API URL with Cloud-safe precedence:
+    1) API_BASE_URL env var
+    2) st.secrets["API_BASE_URL"]
+    3) localhost fallback for local development
+    """
+    env_url = os.environ.get("API_BASE_URL", "").strip()
+    if env_url:
+        return env_url
+
+    try:
+        secret_url = str(st.secrets.get("API_BASE_URL", "")).strip()
+        if secret_url:
+            return secret_url
+    except Exception:
+        pass
+
+    return "http://localhost:5000"
+
+
+def is_probably_streamlit_cloud() -> bool:
+    return bool(
+        os.environ.get("STREAMLIT_SERVER_PORT")
+        or os.environ.get("STREAMLIT_SHARING_MODE")
+        or os.environ.get("STREAMLIT_RUNTIME")
+    )
+
+
+DEFAULT_API_URL = resolve_default_api_url()
 FUND_OPTIONS = {
     "Money Market Fund": "money_market_fund",
     "Fixed Income Fund (USD)": "fixed_income_fund__usd_",
@@ -307,6 +335,11 @@ def render_prediction_result(pred: Dict, show_contributions: bool = True):
 with st.sidebar:
     st.header("⚙️ Settings")
     api_url = st.text_input("API base URL", value=DEFAULT_API_URL)
+    if is_probably_streamlit_cloud() and ("localhost" in api_url or "127.0.0.1" in api_url):
+        st.warning(
+            "This app is running in Streamlit Community Cloud but API URL is localhost. "
+            "Set a public FastAPI URL in Secrets as `API_BASE_URL`."
+        )
     if st.button("Check connection"):
         ok, msg, data = check_api_connection(api_url)
         if ok:

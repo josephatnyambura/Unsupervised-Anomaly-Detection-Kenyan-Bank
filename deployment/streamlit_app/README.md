@@ -25,6 +25,25 @@ streamlit run streamlit_app/app.py
 
 Then open the URL shown in the terminal (default **http://localhost:8501**).
 
+## Streamlit Community Cloud deployment
+
+Use these settings in Streamlit Community Cloud:
+
+- **Main file path**: `deployment/streamlit_app/app.py`
+- **Requirements file**: `deployment/streamlit_app/requirements.txt` (auto-detected)
+- **Python runtime**: from `deployment/streamlit_app/runtime.txt`
+
+Set your API endpoint in app **Secrets**:
+
+```toml
+API_BASE_URL = "https://<your-fastapi-public-url>"
+```
+
+Important:
+- Do **not** leave the API URL as `http://localhost:5000` on Cloud.
+- The Streamlit app and FastAPI API must both be publicly reachable over HTTPS.
+- After deployment, click **Check connection** in the sidebar. It should show `API healthy. Models loaded.`.
+
 ## Using the app
 
 1. **Sidebar**

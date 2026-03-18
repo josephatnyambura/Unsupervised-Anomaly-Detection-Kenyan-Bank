@@ -89,8 +89,8 @@ git add .
 # First commit
 git commit -m "Add anomaly detection Streamlit app and deployment"
 
-# Add GitHub as remote (replace YOUR_USERNAME and YOUR_REPO with your GitHub username and repo name)
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+# Add GitHub as remote (your repo: Unsupervised-Anomaly-Detection-Kenyan-Bank)
+git remote add origin https://github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank.git
 
 # Push (main branch; use master if your default branch is master)
 git branch -M main
@@ -102,11 +102,11 @@ If the folder is already a Git repo, skip `git init`. Use:
 ```powershell
 git add .
 git commit -m "Add Streamlit app for share deployment"
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git remote add origin https://github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank.git
 git push -u origin main
 ```
 
-Replace `YOUR_USERNAME` and `YOUR_REPO` with your actual GitHub username and repository name.
+**Your repository:** [github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank](https://github.com/josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank)
 
 ---
 
@@ -122,7 +122,7 @@ Replace `YOUR_USERNAME` and `YOUR_REPO` with your actual GitHub username and rep
 1. Click **“New app”**.
 2. **Connect GitHub** if prompted (authorize Streamlit to see your repositories).
 3. Fill in:
-   - **Repository:** `YOUR_USERNAME/YOUR_REPO` (e.g. `jnyambura/anomaly-detection-kenyan-bank`).
+   - **Repository:** `josephatnyambura/Unsupervised-Anomaly-Detection-Kenyan-Bank`.
    - **Branch:** `main` (or the branch you pushed).
    - **Main file path:**  
      `deployment/streamlit_app/app.py`  
