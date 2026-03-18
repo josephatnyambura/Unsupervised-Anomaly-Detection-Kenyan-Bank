@@ -100,6 +100,18 @@ app = FastAPI(
 Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
 
+@app.get("/")
+async def root():
+    """Root endpoint for quick deployment verification."""
+    return {
+        "status": "ok",
+        "service": "Anomaly Detection API",
+        "docs": "/docs",
+        "health": "/health",
+        "models": "/models",
+    }
+
+
 @app.get("/health", response_model=HealthResponse)
 async def health_check():
     """Health check for Kubernetes/Docker."""
