@@ -11,23 +11,36 @@ import logging
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-# Allow importing deployment app when run from project root
 _project_root = Path(__file__).resolve().parent.parent
-if str(_project_root) not in sys.path:
-    sys.path.insert(0, str(_project_root))
+_this_dir = Path(__file__).resolve().parent
+for p in (str(_project_root), str(_this_dir)):
+    if p not in sys.path:
+        sys.path.insert(0, p)
 
 from fastapi import FastAPI, HTTPException
 from prometheus_fastapi_instrumentator import Instrumentator
 
-from fastapi_app.schemas import (
-    PredictRequest,
-    PredictResponse,
-    PredictionOut,
-    HealthResponse,
-    ModelsResponse,
-    ModelInfo,
-    ReloadResponse,
-)
+try:
+    from fastapi_app.schemas import (
+        PredictRequest,
+        PredictResponse,
+        PredictionOut,
+        HealthResponse,
+        ModelsResponse,
+        ModelInfo,
+        ReloadResponse,
+    )
+except Exception:
+    # Vercel with Root Directory=fastapi_app resolves local modules directly.
+    from schemas import (
+        PredictRequest,
+        PredictResponse,
+        PredictionOut,
+        HealthResponse,
+        ModelsResponse,
+        ModelInfo,
+        ReloadResponse,
+    )
 
 logging.basicConfig(
     level=logging.INFO,
@@ -35,7 +48,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Backend: use deployment/app if available
+# Backend:
+# 1) Prefer deployment/app backend when available (local/full repo runtime).
+# 2) Fallback to fastapi_app local backend for Vercel/serverless runtime.
 try:
     from deployment.app.model_loader import ModelLoader
     from deployment.app.anomaly_detector import AnomalyDetector
@@ -43,9 +58,23 @@ try:
     model_loader = ModelLoader(models_dir=_models_dir)
     anomaly_detector = AnomalyDetector(model_loader)
 except Exception as e:
-    logger.warning("Deployment app not available: %s. API will run in degraded mode.", e)
-    model_loader = None
-    anomaly_detector = None
+    logger.warning("Deployment backend unavailable: %s. Trying local fastapi_app backend.", e)
+    try:
+        try:
+            from fastapi_app.model_loader import ModelLoader
+            from fastapi_app.anomaly_detector import AnomalyDetector
+        except Exception:
+            from model_loader import ModelLoader
+            from anomaly_detector import AnomalyDetector
+
+        _models_dir = os.environ.get("MODELS_DIR", str(_project_root / "models"))
+        model_loader = ModelLoader(models_dir=_models_dir)
+        anomaly_detector = AnomalyDetector(model_loader)
+        logger.info("Using local fastapi_app backend with models dir: %s", _models_dir)
+    except Exception as e2:
+        logger.warning("Local backend unavailable: %s. API will run in degraded mode.", e2)
+        model_loader = None
+        anomaly_detector = None
 
 
 @asynccontextmanager

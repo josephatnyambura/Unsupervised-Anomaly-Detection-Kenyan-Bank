@@ -1,0 +1,16 @@
+# Keep deployment lean: exclude notebooks, docs, figures, and bulky outputs.
+*.ipynb
+agent-transcripts/
+assets/
+article/
+deployment/
+eda/
+ml/
+Data/
+Unit Trust Anomaly Detection ML Model - Proposal/
+presentation/
+__pycache__/
+*.pyc
+
+# Keep only latest model artifacts for inference.
+models/*/v_*/
