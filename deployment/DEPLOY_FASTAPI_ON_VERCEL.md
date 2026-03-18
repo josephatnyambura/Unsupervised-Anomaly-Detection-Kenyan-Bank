@@ -7,7 +7,7 @@ This guide reflects the current project setup for Vercel:
 - `fastapi_app/main.py`
 - `fastapi_app/requirements.txt`
 - `fastapi_app/.python-version`
-- model artifacts in `models/*/latest`
+- model artifacts in `models/*/latest` and `models/*/v_*` (fallback)
 
 It addresses both `AL_NOT_FOUND / NOT_FOUND` and `FUNCTION_INVOCATION_FAILED`.
 
@@ -141,6 +141,9 @@ If function crashes after deploy:
    - `models/model_registry.json`
    - `models/money_market_fund/latest/*`
    - `models/fixed_income_fund__usd_/latest/*`
+   - at least one fallback `model.joblib` in:
+     - `models/money_market_fund/v_*/model.joblib`
+     - `models/fixed_income_fund__usd_/v_*/model.joblib`
 4. Redeploy with cache cleared.
 5. Start with lightweight endpoint test:
    - `/health` and `/models` first
@@ -167,7 +170,7 @@ Vercel can run this API, but serverless limits may still affect heavy ML inferen
 For stability on Vercel:
 
 - keep prediction payloads small
-- keep only required artifacts in `models/*/latest`
+- keep model artifacts available for loader fallback (`latest` and at least one `v_*` with `model.joblib`)
 - avoid adding heavy unrelated files to deployment
 
 ---
