@@ -6,7 +6,7 @@ This guide reflects the current project setup for Vercel:
 - `.vercelignore` at repo root
 - `fastapi_app/main.py`
 - `fastapi_app/requirements.txt`
-- `fastapi_app/.python-version`
+- `.python-version` and `fastapi_app/.python-version`
 - model artifacts in `models/*/latest` and `models/*/v_*` (fallback)
 
 It addresses both `AL_NOT_FOUND / NOT_FOUND` and `FUNCTION_INVOCATION_FAILED`.
@@ -88,11 +88,13 @@ Why root repo? You need both `fastapi_app` and `models` in deployment.
 
 ## 4) Python and dependency behavior
 
-Your logs showed Python defaulting to 3.12. The project now includes:
+Your logs showed `uv lock` failing when `.python-version` was `3.11` while project requires `==3.12.*`.
+The project should use:
 
-- `fastapi_app/.python-version` = `3.11`
+- `.python-version` = `3.12`
+- `fastapi_app/.python-version` = `3.12`
 
-Keep this committed to reduce runtime incompatibility risk.
+Keep both committed to avoid version mismatch in Vercel builds.
 
 Your logs also showed bundle size exceeded and runtime dependency installation was enabled. This can still happen with ML dependencies, but the updated setup reduces failure risk by:
 
@@ -148,6 +150,22 @@ If function crashes after deploy:
 5. Start with lightweight endpoint test:
    - `/health` and `/models` first
    - then `/predict` with 1 row
+
+---
+
+## 7.1 Fix `uv lock` Python mismatch
+
+If you get:
+
+`The Python request from .python-version resolved to Python 3.11.x, which is incompatible with project.requires-python ==3.12.*`
+
+Do this:
+
+1. Set both files to `3.12`:
+   - `.python-version`
+   - `fastapi_app/.python-version`
+2. Commit and push.
+3. Redeploy with **Clear Build Cache**.
 
 ---
 
